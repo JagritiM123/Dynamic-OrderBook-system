@@ -556,47 +556,4 @@ int cancelOrder(order_list* orderBook, int id, char username[])
     printf("Order not found.\n");
     return 0;
 }
-Order* reverseDLL(Order* head)
-{
-    if (head == NULL || head->next == NULL) return head;
 
-    Order* current = head; 
-    Order* temp = NULL;
-    Order* new_head = NULL;
-    
-    while (current != NULL) {
-        new_head = current;
-        
-        temp = current->prev;
-        current->prev = current->next;
-        current->next = temp;
-        
-        current = current->prev;
-    }
-
-    return new_head;
-}
-
-void displayDLL(Order* head){
-    if (head == NULL) {
-        printf("List is empty.\n");
-        return;
-    }
-    Order* temp = head;
-
-    while (temp != NULL)
-    {
-        char time_str[20];
-        strftime(time_str, sizeof(time_str), "%H:%M:%S",
-                localtime(&temp->time_stamps));
-
-        printf("ID:%d | USER: %s | Price:%.2f | Qty:%d | Type:%c | Time:%s\n",
-               temp->order_id,
-               temp->user,
-               temp->price,
-               temp->quantity,
-               temp->buy_or_sell,
-               time_str);
-        temp = temp->next;
-    }
-}
