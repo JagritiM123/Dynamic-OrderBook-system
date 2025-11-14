@@ -52,5 +52,3 @@ bstnode* deleteBST(bstnode* root, float price, order_list* orderBook);
 void matchOrders( order_list* orderBook);
 void updatemarketstates(order_list* orderBook);
 int cancelOrder(order_list* orderBook, int order_id, char username[]);
-Order* reverseDLL(Order* head);
-void displayDLL(Order* head);
